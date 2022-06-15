@@ -4,6 +4,7 @@ import { UsuarioLogin } from 'src/app/model/UsuarioLogin';
 import { AuthService } from 'src/app/service/auth.service';
 import { environment } from 'src/environments/environment.prod';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +12,7 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class LoginComponent implements OnInit {
 
-  usuarioLogin: UsuarioLogin = new UsuarioLogin()
+  usuarioLogin: UsuarioLogin = new UsuarioLogin
 
   constructor(
     private auth: AuthService,
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    window.scroll(0, 0)
+    window.scroll(0,0)
+
   }
 
   entrar() {
@@ -28,7 +30,10 @@ export class LoginComponent implements OnInit {
         this.usuarioLogin = resp
         environment.token = this.usuarioLogin.token
         environment.nome = this.usuarioLogin.nome
-        environment.id = this.usuarioLogin.id 
+        environment.id = this.usuarioLogin.id
+
+        console.log(environment.nome)
+
         this.router.navigate(['/home'])
       },
       error: erro => {
